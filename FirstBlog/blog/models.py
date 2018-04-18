@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-
+'''
 class MyModelName(models.Model):
     """
     A typical class defining a model, derived from the Model class.
@@ -33,3 +33,12 @@ a_record = MyModelName(my_field_name="Instance #1")
 
 # Save the object into the database.
 a_record.save()
+
+# Access model field values using Python attributes.
+print(a_record.id) #should return 1 for the first record.
+print(a_record.my_field_name) # should print 'Instance #1'
+
+# Change record by modifying the fields, then calling save().
+a_record.my_field_name="New Instance Name"
+a_record.save()
+'''
