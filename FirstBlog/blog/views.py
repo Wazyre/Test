@@ -4,8 +4,19 @@ from django.views.generic import TemplateView
 
 # Create your views here.
 class HomePageView(TemplateView):
-    def get(self, request, **kwargs):
-        return render(request, 'index.html', context=None)
+    template_name = "index.html"
+
+class AboutPageView(TemplateView):
+    template_name = "about.html"
+
+class PythonPageView(TemplateView):
+    template_name = "python.html"
+
+class CPageView(TemplateView):
+    template_name = "c.html"
+
+class CPlusPlusPageView(TemplateView):
+    template_name = "c++.html"
 '''
 class posts(models.Model):
     author = models.CharField(max_length = 30)
