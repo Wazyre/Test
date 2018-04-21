@@ -29,7 +29,7 @@ urlpatterns = [
 
 
 urlpatterns += [
-    url(r'^', include('blog.urls')),
+    url(r'', include('blog.urls')),
 ]
 '''
 #Add URL maps to redirect the base URL to our application
