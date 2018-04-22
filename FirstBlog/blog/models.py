@@ -2,22 +2,32 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
-
+LANGUAGES = (
+    ('C', 'C'),
+    ('CPP', 'C++'),
+    ('JAVA', 'Java'),
+    ('PY', 'Python'),
+)
+'''upload_to = language.choices + '/'''
 class File(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    description = models.CharField(max_length=500)
+    name = models.CharField(max_length = 200)
+    description = models.CharField(max_length = 500)
     '''created_date = models.DateTimeField(
             default=timezone.now)'''
-    upload_date = models.DateTimeField(
-            blank=True, null=True)
+    language = models.CharField(max_length = 6, choices = LANGUAGES, null = True)
+    file_upload = models.FileField(null = True, upload_to = 'compiled_files/%Y/%m/%d/')
+    upload_date = models.DateTimeField(blank = True, null = True)
 
     def upload(self):
         self.upload_date = timezone.now()
         self.save()
 
     def __str__(self):
-        return self.title
+        """
+        String for representing the File object (in Admin site etc.)
+        """
+        return self.name
 
 '''
 class MyModelName(models.Model):

@@ -31,6 +31,9 @@ urlpatterns = [
 urlpatterns += [
     url(r'', include('blog.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 '''
 #Add URL maps to redirect the base URL to our application
 

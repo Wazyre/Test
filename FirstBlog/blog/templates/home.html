@@ -1,18 +1,32 @@
-<!-- blog/templates/index.html -->
+<!-- blog/templates/home.html -->
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Programming Website</title>
+      <meta charset="utf-8">
+      <title>Programming Website</title>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:600" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
+
     <body>
+      <div class="page-header">
         <h1>Programming Website</h1>
-        <p>On this website, you will find files from various programming languages, from C to python.
-          Go to the appropriate page using the links below</p>
-      <a href="/about/">About Page</a>
-      <a href="/python/">Python Files</a>
-      <a href="/c/">C Files</a>
-      <a href="/c++/">C++ Files</a>
+      </div>
+      <div class="links">
+        <a href="/file/">Upload File</a>
+      </div>
+      <p>On this website, you will find files from various programming languages, from C to python.
+      Go to the appropriate page using the links below</p>
+      <div class="links">
+      <a href="/about/">About Page &nbsp</a>
+      <a href="/compiled_files/">Compiled Files &nbsp</a>
+      <a href="/python/">Python Files &nbsp</a>
+      <a href="/c/">C Files &nbsp</a>
+      <a href="/c++/">C++ Files &nbsp</a>
       <a href="/java/">Java Files</a>
+    </div>
     </body>
 </html>
