@@ -1,10 +1,10 @@
-<!-- blog/templates/c++.html -->
+<!-- blog/templates/file.html -->
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Compiled Files</title>
+        <title>Uploading File</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:600" rel="stylesheet">
@@ -14,17 +14,80 @@
       <div class="page-header">
         <h1><a href="/">Programming Website</a></h1>
       </div>
-        <h1>Welcome to the Compiled Files page</h1>
-    <p>
-       Below, you will find Compiled files uploaded from local computers:
-    </p>
+      <h2>List of Files</h2>
+      <p></p>
+      <!-- List of uploaded documents -->
+    {% if files %}
+        <ul>
+        {% for file in files %}
+            <li><a href="{{ file.file_upload.url }}">{{ file.file_upload.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No files</p>
+    {% endif %}
+
+        <h2>Uploading File</h2>
+        <p>Please fill out the form below to upload your file:</p>
+
+<form action="compiled_files/" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <!-- *name -->
+    {{  form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.name.errors }}
+        <label for="id_name">Name:</label>
+        {{ form.name }}
+    </div>
+    <p></p>
+    <!-- *author
+    <div class="fieldWrapper">
+        {{ form.author.errors }}
+        <label for="id_author">Author</label>
+        {{ form.author }}
+    </div>-->
+    <!-- description -->
+    <div class="fieldWrapper">
+        {{ form.description.errors }}
+        <label for="id_description">Description:</label>
+        {{ form.description }}
+    </div>
+    <p></p>
+    <!-- language -->
+    <div class="fieldWrapper">
+        {{ form.language.errors }}
+        <label for="id_language">Language:</label>
+        {{ form.language }}
+    </div>
+    <p></p>
+    <!-- file upload -->
+    <div class="fieldWrapper">
+        <p>{{form.file_upload.label_tag}} &nbsp {{form.file_upload.help_text}}</p>
+
+        {{ form.file_upload.errors }}
+        <!--label for="id_file_upload">File Upload</label-->
+
+        {{ form.file_upload }}
+    </div>
+    <p></p>
+    <!-- upload date -->
+    <div class="fieldWrapper">
+        {{ form.upload_date.errors }}
+        <label for="id_upload_date">Upload Date:</label>
+        {{ form.upload_date }}
+    </div>
+    <p></p>
+    <p><input type="submit" value="Upload"/></p>
+    <!--button type="submit">Upload</button-->
+</form>
     <div class="links">
-    <a href="/">Back home &nbsp</a>
-    <a href="/about/">About Page &nbsp</a>
-    <a href="/python/">Python Files &nbsp</a>
-    <a href="/c/">C Files &nbsp</a>
-    <a href="/c++/">C++ Files &nbsp</a>
-    <a href="/java/">Java Files &nbsp</a>
-  </div>
+      <a href="/">Back home &nbsp</a>
+      <a href="/about/">About Page &nbsp</a>
+      <a href="/python/">Python Files &nbsp</a>
+      <a href="/c/">C Files &nbsp</a>
+      <a href="/c++/">C++ Files &nbsp</a>
+      <a href="/java/">Java Files &nbsp</a>
+    </div>
     </body>
 </html>
+<!--i class="fa fa-thumb-tack"></i -->

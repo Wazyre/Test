@@ -16,8 +16,8 @@ class File(models.Model):
     '''created_date = models.DateTimeField(
             default=timezone.now)'''
     language = models.CharField(max_length = 6, choices = LANGUAGES, null = True)
-    file_upload = models.FileField(null = True, upload_to = 'compiled_files/%Y/%m/%d/')
-    upload_date = models.DateTimeField(blank = True, null = True)
+    file_upload = models.FileField(null = True, upload_to = 'files/%Y/%m/%d/')
+    upload_date = models.DateTimeField(null = True, auto_now_add = True)
 
     def upload(self):
         self.upload_date = timezone.now()

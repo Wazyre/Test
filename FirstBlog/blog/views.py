@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext
 from django.http import HttpResponse
 from django.db import models
+from django.urls import reverse
 from django.views.generic import TemplateView, FormView
 from .models import File
 from .forms import FileForm
 from django.core.files.storage import FileSystemStorage
+from django.utils import timezone
 
 # Create your views here.
 class HomePageView(TemplateView):
@@ -24,7 +27,7 @@ class CPlusPlusPageView(TemplateView):
 
 class JavaPageView(TemplateView):
     template_name = "java.html"
-
+'''
 class FilePageView(FormView):
     template_name = "file.html"
     success_url = '/success/'
@@ -33,20 +36,31 @@ class FilePageView(FormView):
     def form_valid(self, form):
         return HttpResponse("Sweeeet")
 
-class CompiledFilePageView(TemplateView):
+class CompiledFilesPageView(TemplateView):
     template_name = "compiled_files.html"
-
-def file(request):
+'''
+def compiled_files(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+            usr_file = File(file_upload = request.FILES['file_upload'])
+            usr_file.save()
+
+            # Redirect to the file list after POST
+            return HttpResponseRedirect(reverse('compiled_files_page'))
     else:
         form = FileForm()
-    return render(request, '/file.html', {
-        'form': form
-    })
+
+    #Upload all files for file page
+    files = File.objects.all()
+    return render(
+        request,
+        'compiled_files.html',
+        {
+            'form': form,
+            'files': files
+        }
+    )
 
 '''
 class posts(models.Model):
