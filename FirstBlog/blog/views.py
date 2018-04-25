@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from django.db import models
 from django.urls import reverse
 from django.views.generic import TemplateView, FormView
-from .models import File
-from .forms import FileForm
+from .models import File, FileForm
+#from .forms import FileForm
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 
