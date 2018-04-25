@@ -2,7 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django import forms
 from django.forms import ModelForm
-
+from datetime import datetime, date
+from FirstBlog import settings
 # Create your models here.
 LANGUAGES = (
     ('C', 'C'),
@@ -10,19 +11,27 @@ LANGUAGES = (
     ('JAVA', 'Java'),
     ('PY', 'Python'),
 )
+
+
+
 '''upload_to = language.choices + '/'''
 class File(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+
+    def default_date():
+        now = timezone.now()
+        return now
+
+    author = models.ForeignKey('auth.User', on_delete = models.CASCADE, null = True)
     name = models.CharField(max_length = 200)
-    description = models.CharField(max_length = 500)
+    description = models.TextField(max_length = 500)
     '''created_date = models.DateTimeField(
             default=timezone.now)'''
     language = models.CharField(max_length = 6, choices = LANGUAGES, null = True)
-    file_upload = models.FileField(null = True, upload_to = 'files/%Y/%m/%d/')
-    upload_date = models.DateTimeField(null = True, auto_now_add = True)
+    file_upload = models.FileField(null = True, upload_to = 'files/')
+    upload_date = models.DateField(default = date.today, blank = True)
 
     def upload(self):
-        self.upload_date = timezone.now()
+        self.upload_date = timezone.now
         self.save()
 
     def __str__(self):
@@ -31,35 +40,14 @@ class File(models.Model):
         """
         return self.name
 
-class FileForm(ModelForm):
-    error_css_class = 'error'
-
-    #author = forms.ForeignKey('auth.User', on_delete=models.CASCADE)
-    name = forms.CharField(max_length = 200)
-    description = forms.CharField(max_length = 500)
-    language = forms.ChoiceField(choices = LANGUAGES, required = True)
-    file_upload = forms.FileField(
-        #required = True,
-        label = 'Upload a file',
-        help_text = '(max. 100 MB)'
-        )
-
-    upload_date = forms.DateTimeField()
-
-    class Meta:
-        model = File
-        fields = ('file_upload',)
-
-        widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'What\'s your name?'}),
-            'description': forms.TextInput(attrs={'placeholder': 'This program does...'}),
-            'upload_date': forms.TextInput(attrs={'placeholder': 'MM/DD/YYYY'})
-        }
 
 
 
 
 '''
+input_formats = settings.DATE_INPUT_FORMATS,
+
+
 class MyModelName(models.Model):
     """
     A typical class defining a model, derived from the Model class.

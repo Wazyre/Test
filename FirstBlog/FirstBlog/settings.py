@@ -110,7 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'PST8PDT'
-'''DATE_FORMAT = "Y-m-d"'''
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
+DATE_FROMATS = ['%d-%m-%Y']
 
 USE_I18N = True
 

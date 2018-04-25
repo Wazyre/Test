@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^java/$', views.JavaPageView.as_view(), name = 'java_files'),
     #url(r'^file/$', views.FilePageView.as_view(), name = 'upload_file'),
     url(r'^compiled_files/$', compiled_files, name = 'compiled_files_page'),
+    url(r'^compiled_files/compiled_files/$', compiled_files, name = 'compiled_files_page2'),
 ]

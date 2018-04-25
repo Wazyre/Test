@@ -1,11 +1,11 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.db import models
 from django.urls import reverse
 from django.views.generic import TemplateView, FormView
-from .models import File, FileForm
-#from .forms import FileForm
+from .models import File
+from .forms import FileForm
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 
@@ -28,14 +28,6 @@ class CPlusPlusPageView(TemplateView):
 class JavaPageView(TemplateView):
     template_name = "java.html"
 '''
-class FilePageView(FormView):
-    template_name = "file.html"
-    success_url = '/success/'
-    form_class = FileForm
-
-    def form_valid(self, form):
-        return HttpResponse("Sweeeet")
-
 class CompiledFilesPageView(TemplateView):
     template_name = "compiled_files.html"
 '''
@@ -61,11 +53,3 @@ def compiled_files(request):
             'files': files
         }
     )
-
-'''
-class posts(models.Model):
-    author = models.CharField(max_length = 30)
-    title = models.CharField(max_length = 100)
-    bodytext = models.TextField()
-    timestamp = models.DateTimeField()
-'''

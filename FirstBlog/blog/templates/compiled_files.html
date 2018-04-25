@@ -17,36 +17,37 @@
       <h2>List of Files</h2>
       <p></p>
       <!-- List of uploaded documents -->
-    {% if files %}
+      {% if files %}
         <ul>
         {% for file in files %}
             <li><a href="{{ file.file_upload.url }}">{{ file.file_upload.name }}</a></li>
         {% endfor %}
         </ul>
-    {% else %}
+      {% else %}
         <p>No files</p>
-    {% endif %}
+      {% endif %}
 
         <h2>Uploading File</h2>
         <p>Please fill out the form below to upload your file:</p>
 
 <form action="compiled_files/" method="post" enctype="multipart/form-data">
   {% csrf_token %}
-    <!-- *name -->
+    <!-- *author -->
     {{  form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.author.errors }}
+        <label for="id_name">Author of Program:</label>
+        {{ form.author }}
+    </div>
+    <p></p>
+    <!-- *name -->
     <div class="fieldWrapper">
         {{ form.name.errors }}
         <label for="id_name">Name of Program:</label>
         {{ form.name }}
     </div>
     <p></p>
-    <!-- *author
-    <div class="fieldWrapper">
-        {{ form.author.errors }}
-        <label for="id_author">Author</label>
-        {{ form.author }}
-    </div>-->
-    <!-- description -->
+
     <div class="fieldWrapper">
         {{ form.description.errors }}
         <label for="id_description">Description:</label>
@@ -90,4 +91,3 @@
     </div>
     </body>
 </html>
-<!--i class="fa fa-thumb-tack"></i -->
