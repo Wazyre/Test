@@ -1,4 +1,4 @@
-<!-- blog/templates/file.html -->
+<!-- blog/templates/compiled_files.html -->
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
@@ -26,11 +26,17 @@
       {% else %}
         <p>No files</p>
       {% endif %}
-
+<!--
+      {% for file in files %}
+      <ul>
+        <li><a href="{{ file.css_class }}">name</a></li>
+      </ul>
+      {% endfor %}
+-->
         <h2>Uploading File</h2>
         <p>Please fill out the form below to upload your file:</p>
 
-<form action="compiled_files/" method="post" enctype="multipart/form-data">
+<form id="thing" action="compiled_files/" method="post" enctype="multipart/form-data">
   {% csrf_token %}
     <!-- *author -->
     {{  form.non_field_errors }}
@@ -78,7 +84,8 @@
         {{ form.upload_date }}
     </div>
     <p></p>
-    <p><input type="submit" value="Upload"/></p>
+    <p><input type="submit" value="Upload"/>
+    <input type="button" onclick="reset()" value="Reset form"></p>
     <!--button type="submit">Upload</button-->
 </form>
     <div class="links">
@@ -89,5 +96,12 @@
       <a href="/c++/">C++ Files &nbsp</a>
       <a href="/java/">Java Files &nbsp</a>
     </div>
+
+    <script>
+      function reset() {
+        document.getElementById("thing").reset();
+      }
+    </script>
+
     </body>
 </html>

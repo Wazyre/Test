@@ -35,8 +35,8 @@ def compiled_files(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
-            usr_file = File(file_upload = request.FILES['file_upload'])
-            usr_file.save()
+            file = request.FILES['file_upload']
+            form.save() #Saving form model
 
             # Redirect to the file list after POST
             return HttpResponseRedirect(reverse('compiled_files_page'))

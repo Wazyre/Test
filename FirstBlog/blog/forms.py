@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.db import models
 from blog import models
-from django.utils import timezone
+
 
 LANGUAGES = (
     ('C', 'C'),
@@ -21,6 +21,6 @@ class FileForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Hello World!'}),
             'description': forms.TextInput(attrs={'placeholder': 'This program does...'}),
-            'upload_date': forms.TextInput(attrs={'placeholder': 'MM/DD/YYYY'}),
-            'upload_date': forms.DateInput(format = "%d-%m-%Y")
+            'upload_date': forms.TextInput(attrs={'placeholder': 'DD/MM/YYYY'}),
+            'upload_date': forms.DateInput(format = "%d/%m/%Y")
         }

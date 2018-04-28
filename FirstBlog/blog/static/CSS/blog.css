@@ -1,20 +1,33 @@
 body {
-    padding-left: 15px;
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 h1 {
-    font-family: 'Raleway', sans-serif;
-
+  font-family: 'Raleway', sans-serif;
+  padding-left: 15px;
 }
 .page-header {
-    background-color: #80D2FF;
-    margin-top: 0;
-    padding: 20px 20px 20px 15px;
-    color: #ffffff;
+  background-color: #80D2FF;
+  background-image: linear-gradient(to right, #000000, #80d2ff);
+  background-image: url("http://www.psdgraphics.com/wp-content/uploads/2015/05/circuit-board.jpg");
+  /*background-repeat: no-repeat;*/
+  margin-top: 0;
+  padding: 20px 20px 20px 15px;
+  color: #ffffff;
 }
 .links{
-    color: #36A1CF;
+  color: #36A1CF;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 15px;
 }
 .fieldWrapper{
-
+  padding-left: 15px;
+}
+h1 a{
+  color: #ffffff;
+}
+p{
+  padding-left: 15px;
+}
+h2{
+  padding-left: 15px;
 }
