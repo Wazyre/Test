@@ -31,22 +31,43 @@ p{
 h2{
   padding-left: 15px;
 }
-.button{
-  background-color: white; /* Green */
+.submitButton:hover{
+  background-color: grey;
   border: none;
-  color: white;
-  padding: 16px 32px;
+  padding: 8px 16px;
   padding-left: 15px;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
-}
-.button1{
-  background-color: white;
-  color: black;
   border: 2px solid #555555;
 }
-.button1:hover {
-  background-color: #555555;
-  color: white;
+.submitButton{
+  background-color: white;
+  border: none;
+  padding: 8px 16px;
+  padding-left: 15px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #555555;
+}
+.resetButton:hover{
+  background-color: grey;
+  border: none;
+  padding: 8px 16px;
+  padding-left: 15px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #555555;
+}
+.resetButton{
+  background-color: white;
+  border: none;
+  padding: 8px 16px;
+  padding-left: 15px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #555555;
 }
