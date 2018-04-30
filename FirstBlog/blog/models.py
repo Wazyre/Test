@@ -56,7 +56,7 @@ class File(models.Model):
         if os.path.isfile(self.file_upload.path):
             os.remove(self.file_upload.path)
 
-        super(Excel, self).delete(*args,**kwargs)
+        super(File, self).delete(*args,**kwargs)
 
 def file_cleanup(sender, **kwargs):
     """

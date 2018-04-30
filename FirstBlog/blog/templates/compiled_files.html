@@ -84,10 +84,17 @@
         {{ form.upload_date }}
     </div>
     <p></p>
-    <p><input type="submit" value="Upload"/>
-    <input type="button" onclick="reset()" value="Reset form"></p>
+    <button type="submit" class="submitting">Upload</button>
+    <p></p>
+    <p><input type="reset" value="Reset form"></p>
     <!--button type="submit">Upload</button-->
 </form>
+<script>
+  function reset() {
+    document.getElementById("thing").reset();
+  }
+</script>
+
     <div class="links">
       <a href="/">Back home &nbsp</a>
       <a href="/about/">About Page &nbsp</a>
@@ -96,12 +103,5 @@
       <a href="/c++/">C++ Files &nbsp</a>
       <a href="/java/">Java Files &nbsp</a>
     </div>
-
-    <script>
-      function reset() {
-        document.getElementById("thing").reset();
-      }
-    </script>
-
     </body>
 </html>
