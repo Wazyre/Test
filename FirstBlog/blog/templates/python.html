@@ -1,29 +1,32 @@
 <!-- blog/templates/python.html -->
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Python Files</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:600" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-      <div class="page-header">
-        <h1><a href="/">Programming Website</a></h1>
-      </div>
+{% extends "base.html" %}
+{% block content %}
       <h1>Welcome to the Python Files page</h1>
     <p>
        Below, you will find python files uploaded from local computers:
     </p>
-    <div class="links">
-    <a href="/">Back home &nbsp</a>
-    <a href="/about/">About Page &nbsp</a>
-    <a href="/c/">C Files &nbsp</a>
-    <a href="/c++/">C++ Files &nbsp</a>
-    <a href="/java/">Java Files</a>
-  </div>
-    </body>
-</html>
+    {% if files %}
+      <ul>
+      {% for file in files %}
+        <% if (file.css_class="py") %>
+        <% { %>
+          <li><a href="{{ file.file_upload.url }}">{{ file.file_upload.name }}</a></li>
+          <% } %>
+      {% endfor %}
+    {% endif %}
+      </ul>
+      <script>
+      function ext(){
+        var exten = file.css_class;
+        var bool;
+        if (exten == "py"){
+          bool = True;
+        }
+        else{
+          bool = False;
+        }
+        document.getElementById("thing").innerHTML = bool;
+      }
+        </script>
+
+  {% endblock %}

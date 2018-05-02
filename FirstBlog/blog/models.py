@@ -41,15 +41,15 @@ class File(models.Model):
     def css_class(self):
         name, extension = os.path.splitext(self.file_upload.name)
         if extension == 'py':
-            return 'py'
+            return "py"
         elif extension == 'c':
-            return 'c'
+            return "c"
         elif extension == 'cpp':
-            return 'cpp'
+            return "cpp"
         elif extension == 'java':
-            return 'java'
+            return "java"
         else:
-            return 'other'
+            return "other"
         return
 
     def delete(self,*args,**kwargs):
