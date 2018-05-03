@@ -5,6 +5,16 @@ h1 {
   font-family: 'Raleway', sans-serif;
   padding-left: 15px;
 }
+h1 a{
+  color: #ffffff;
+}
+h2 {
+  font-family: 'Raleway', sans-serif;
+  padding-left: 15px;
+}
+p{
+  padding-left: 15px;
+}
 .page-header {
   background-color: #80D2FF;
   background-image: linear-gradient(to right, #000000, #80d2ff);
@@ -20,15 +30,6 @@ h1 {
   padding-left: 15px;
 }
 .fieldWrapper{
-  padding-left: 15px;
-}
-h1 a{
-  color: #ffffff;
-}
-p{
-  padding-left: 15px;
-}
-h2{
   padding-left: 15px;
 }
 .submitButton:hover{

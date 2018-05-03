@@ -8,6 +8,8 @@ from .models import File
 from .forms import FileForm
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 # Create your views here.
 class HomePageView(TemplateView):
@@ -16,21 +18,54 @@ class HomePageView(TemplateView):
 class AboutPageView(TemplateView):
     template_name = "about.html"
 
-class PythonPageView(TemplateView):
-    template_name = "python.html"
+def python(request):
+    file = request.FILES.get('file_upload')
+    files = File.objects.all()
+    file_json = json.dumps(list(files), cls=DjangoJSONEncoder)
 
-class CPageView(TemplateView):
-    template_name = "c.html"
+    return render(
+        request,
+        'python.html',
+        {
+            'files': files,
+            'file': file,
+            'files_json': files_json
+        }
+    )
 
-class CPlusPlusPageView(TemplateView):
-    template_name = "c++.html"
+def c(request):
+    file = request.FILES.get('file_upload')
+    files = File.objects.all()
+    return render(
+        request,
+        'c.html',
+        {
+            'files': files
+        }
+    )
 
-class JavaPageView(TemplateView):
-    template_name = "java.html"
-'''
-class CompiledFilesPageView(TemplateView):
-    template_name = "compiled_files.html"
-'''
+def cplusplus(request):
+    file = request.FILES.get('file_upload')
+    files = File.objects.all()
+    return render(
+        request,
+        'c++.html',
+        {
+            'files': files
+        }
+    )
+
+def java(request):
+    file = request.FILES.get('file_upload')
+    files = File.objects.all()
+    return render(
+        request,
+        'java.html',
+        {
+            'files': files
+        }
+    )
+
 def compiled_files(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)

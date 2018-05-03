@@ -1,26 +1,13 @@
 <!-- blog/templates/compiled_files.html -->
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Uploading File</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:600" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-      <div class="page-header">
-        <h1><a href="/">Programming Website</a></h1>
-      </div>
+{% extends "base.html" %}
+{% block content %}
       <h2>List of Files</h2>
       <p></p>
       <!-- List of uploaded documents -->
       {% if files %}
         <ul>
         {% for file in files %}
-            <li><a href="{{ file.file_upload.url }}">{{ file.file_upload.name }}</a></li>
+            <li><a href="{{ file.file_upload.url }}">{{ file.name }}</a></li>
         {% endfor %}
         </ul>
       {% else %}
@@ -94,13 +81,4 @@
   }
 </script>
 
-    <div class="links">
-      <a href="/">Back home &nbsp</a>
-      <a href="/about/">About Page &nbsp</a>
-      <a href="/python/">Python Files &nbsp</a>
-      <a href="/c/">C Files &nbsp</a>
-      <a href="/c++/">C++ Files &nbsp</a>
-      <a href="/java/">Java Files &nbsp</a>
-    </div>
-    </body>
-</html>
+{% endblock %}
